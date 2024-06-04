@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <style>
+        body {
+            font: bold 11pt Arial;
+            background-color: rgba(36, 240, 18, 0.884);
+            text-align: left;
+            display: grid;
+        }
+    </style>
+</head>
+<body>
+    <form id="formulario">
+        <p>Informatica</p>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br>
+        <div>
+          <label for="id_html">HTML5
+            <input type="checkbox"  name="checkbox" value="html" id="id_html">
+          </label>
+            
+          <label for="id_type">CSS3
+            <input type="checkbox" name="checkbox" value="css" id="id_css">
+          </label>
+
+          <label for="id_js">JAVASCRIPT
+            <input type="checkbox" name="checkbox" value="js" id_js>
+          </label>
+
+        </div>
+        
+        <div>
+        <p>Estado civil:</p>
+        <label for="id_sol">solteiro
+            <input type="radio" name="radio" value="solteiro" id="id_sol">
+        </label>
+
+        <label for="id_cas">casado
+            <input type="radio" name="radio" value="casado" id="id_cas">
+        </label>
+    </div>
+    
+    <button type="submit">Enviar</button>
+    
+  </form>
+    
+  <script type="module">
+    // Importação
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
+    import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBD_3WzPZBm83lUW0pMLt48IdLpkovC1a8",
+        authDomain: "teste-484d9.firebaseapp.com",
+        projectId: "teste-484d9",
+        storageBucket: "teste-484d9.appspot.com",
+        messagingSenderId: "631993282858",
+        appId: "1:631993282858:web:708a7715ffc0fda626ee53",
+        measurementId: "G-ZQKVK9DSWK"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const database = getDatabase();
+
+    let form = document.getElementById("form_part2");
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        let vetor = [];
+
+        // Percorrer com o FOR
+        for (let i = 0; i < form.habilidades.length; i++) {
+            if (form.habilidades[i].checked) {
+                vetor[i] = form.habilidades[i].value;
+                console.log(form.habilidades[i].value);
+            }
+        }
+
+        alert(`
+        Nome: ${form.nome_completo.value}
+        Vaga: ${form.cargo.value}
+        Habilidades: ${vetor}
+        Cursos: ${form.cursos_textarea.value}
+        `);
+
+        // Enviar os dados para o Firebase
+        const usersRef = ref(database, 'users');
+        push(usersRef, {
+            nome: form.nome_completo.value,
+            radio: form.cargo.value,
+            cursos: form.cursos_textarea.value,
+            checks: vetor
+        }).then(() => {
+            alert('Dados enviados com sucesso!');
+            console.log("Dados enviados com sucesso!");
+            // Faça qualquer ação adicional aqui, como redirecionar o usuário ou exibir uma mensagem de sucesso.
+        }).catch((error) => {
+            console.error('Erro ao enviar dados:', error);
+        });
+
+    });
+</script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+</script>
+</body>
+</html>
+

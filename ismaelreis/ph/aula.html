@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      function mostra(frase) {
+        document.write(frase);
+      }
+      var opcaoCalculadora = prompt(
+        "Escolha (+) para soma, (-) para subtração, (*) para multiplicação ou (/) para divisão."
+      );
+      if (opcaoCalculadora == "+") {
+        opcaoCalculadora = 0;
+      }
+      if (opcaoCalculadora == "-") {
+        opcaoCalculadora = 1;
+      }
+      if (opcaoCalculadora == "*") {
+        opcaoCalculadora = 2;
+      }
+      if (opcaoCalculadora == "/") {
+        opcaoCalculadora = 3;
+      }
+      if (opcaoCalculadora == 0) {
+        var numero1 = parseInt(prompt("Digite o primeiro número da soma "));
+        var numero2 = parseInt(prompt("Digite o segundo número da soma "));
+        var resultadoSoma = numero1 + numero2;
+        mostra(
+          " A soma de " + numero1 + " e " + numero2 + " é: " + resultadoSoma
+        );
+      }
+      if (opcaoCalculadora == 1) {
+        var numero1 = parseInt(
+          prompt("Digite o primeiro número da subtração ")
+        );
+        var numero2 = parseInt(prompt("Digite o segundo número da subtração "));
+        var resultadoSubtracao = numero1 - numero2;
+        mostra(
+          " A subtração entre " +
+            numero1 +
+            " e " +
+            numero2 +
+            " é: " +
+            resultadoSubtracao
+        );
+      }
+      if (opcaoCalculadora == 2) {
+        var numero1 = parseInt(
+          prompt("Digite o primeiro número da multiplicação ")
+        );
+        var numero2 = parseInt(
+          prompt("Digite o segundo número da multiplicação ")
+        );
+        var resultadoMultiplicacao = numero1 * numero2;
+        mostra(
+          " A multiplicação entre " +
+            numero1 +
+            " e " +
+            numero2 +
+            " é: " +
+            resultadoMultiplicacao
+        );
+      }
+      if (opcaoCalculadora == 3) {
+        var numero1 = parseInt(prompt("Digite o primeiro número da divisão "));
+        var numero2 = parseInt(prompt("Digite o segundo número da divisão "));
+        var resultadoDivisao = numero1 / numero2;
+        mostra(
+          " A divisão entre " +
+            numero1 +
+            " e " +
+            numero2 +
+            " é: " +
+            resultadoDivisao
+        );
+      }
+      if (
+        opcaoCalculadora != 0 &&
+        opcaoCalculadora != 1 &&
+        opcaoCalculadora != 2 &&
+        opcaoCalculadora != 3
+      ) {
+        mostra("Opção inválida.");
+      }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>

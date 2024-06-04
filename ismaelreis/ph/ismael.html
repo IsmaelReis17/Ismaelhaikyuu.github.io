@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos JavaScript</title>
+  </head>
+  <body>
+    <button id="btnClick">Clique Aqui</button>
+
+    <script>
+      // Evento de clique
+      document
+        .getElementById("btnClick")
+        .addEventListener("click", function () {
+          alert("Você clicou no botão!");
+        });
+
+      // Evento de mouse sobre
+      document
+        .getElementById("btnClick")
+        .addEventListener("mouseover", function () {
+          console.log("Mouse sobre o botão!");
+        });
+
+      // Evento de mouse fora
+      document
+        .getElementById("btnClick")
+        .addEventListener("mouseout", function () {
+          console.log("Mouse fora do botão!");
+        });
+
+      // Evento de tecla pressionada
+      document.addEventListener("keydown", function (event) {
+        console.log("Tecla pressionada: " + event.key);
+      });
+
+      // Evento de tecla liberada
+      document.addEventListener("keyup", function (event) {
+        console.log("Tecla liberada: " + event.key);
+      });
+    </script>
+  </body>
+</html>

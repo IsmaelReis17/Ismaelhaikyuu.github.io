@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Pode Dirigir?</h3>
+    <select name="" id="habilitacao">
+      <option value="" disabled selected>você tem habilitacao</option>
+      <option value="true">sim</option>
+      <option value="false">não</option>
+    </select>
+    <input type="number" id="idade" placeholder="infrome sua idade;" />
+    <br />
+    <input type="button" id="botao" value="verificar" />
+    <div id="resultado"></div>
+    <script>
+      let botao = document.getElementById("botao");
+      botao.addEventListener(`click`, verificar);
+      function verificar() {
+        let idade = document.querySelector("#idade").value;
+        let resultado = document.querySelector("#resultado");
+        let habilitacao = document.querySelector("#habilitacao").value;
+        habilitacao = habilitacao == "true" ? true : false;
+        resultado.innerHTML =
+          idade >= 18 && habilitacao ? "pode dirgir" : "não pode dirgir";
+      }
+    </script>
+  </body>
+</html>

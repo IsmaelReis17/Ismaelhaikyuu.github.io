@@ -1,0 +1,14 @@
+<h1>pagina home</h1>
+<form action="/" method="post">
+<label for="name">nome</label><br> 
+<input type="text" name="name">
+<input type="submit" value="enviar">
+</form>
+
+<div>
+    <ul>
+        {{#each nomes}}
+        <li>{{this}}</li>
+        {{/each}}
+    </ul>
+</div>

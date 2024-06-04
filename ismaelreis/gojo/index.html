@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ternário</title>
+  </head>
+  <body>
+    <script>
+      // TENÁRIO é um tipo de operador condicional ternário
+      // condicao ? verdadeiro : falso
+      let idade = 18;
+      let status = idade >= 18 ? "Adulto" : "Menor";
+      console.log(status);
+
+      let pao = true;
+      let margarina = false;
+
+      const cafeDaManha = pao && margarina ? "Café top" : "Café Ruim";
+      console.log(cafeDaManha);
+
+      const cafeDaTarde = pao || margarina ? "Café top" : "Café Ruim";
+      console.log(cafeDaTarde);
+
+      console.log(
+        "Quando um valor é considerado false em contextos onde um booleano é obrigatório condicionais e loops todos retornaram falso"
+      );
+
+      console.log(0 ? "verdadeiro" : "falso");
+
+      console.log(
+        "Quando um valor é considerado true em contextos onde um booleano é obrigatório condicionais e loops"
+      );
+
+      console.log(true, {}, [], 1, 3.23, "0", "false", -1, Infinity, -Infinity);
+
+      let num = 1;
+      console.log(num ? "verdadeiro" : "falso");
+
+      let a;
+      if (a || a != undefined) {
+        console.log("True - Há algo dentro");
+      } else {
+        console.log("Falso - vazio");
+      }
+      console.log("0" ? "verdadeiro" : "falso");
+    </script>
+  </body>
+</html>

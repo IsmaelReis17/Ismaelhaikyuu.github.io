@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exemplo de getElement</title>
+    <style>
+      .destacado {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="titulo">ismael da infor</h1>
+    <p class="paragrafo">eu amo a infor 2.</p>
+    <p class="paragrafo destacado">eu gosto do ph.</p>
+
+    <script>
+      // Usando getElementById
+      const tituloElemento = document.getElementById("titulo");
+      tituloElemento.innerHTML = "ismael da infor";
+
+      // Usando getElementsByClassName
+      const paragrafosDestacados = document.getElementsByClassName("destacado");
+      for (let i = 0; i < paragrafosDestacados.length; i++) {
+        paragrafosDestacados[i].innerHTML += " - eu gosto do curso!";
+      }
+    </script>
+  </body>
+</html>

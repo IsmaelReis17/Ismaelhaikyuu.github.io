@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Firebase</title>
+</head>
+<body>
+    <form id="form_part2">
+        <label for="nome_completo">Nome Completo:</label><br>
+        <input type="text" id="nome_completo" name="nome_completo"><br><br>
+        
+        <label for="cargo">Cargo:</label><br>
+        <input type="text" id="cargo" name="cargo"><br><br>
+        
+        <label for="habilidades">Habilidades:</label><br>
+        <input type="checkbox" id="habilidade1" name="habilidades" value="Habilidade 1">
+        <label for="habilidade1">Habilidade 1</label><br>
+        <input type="checkbox" id="habilidade2" name="habilidades" value="Habilidade 2">
+        <label for="habilidade2">Habilidade 2</label><br>
+        <!-- Adicione mais habilidades conforme necessário -->
+        
+        <br>
+        <label for="cursos_textarea">Cursos:</label><br>
+        <textarea id="cursos_textarea" name="cursos_textarea" rows="4" cols="50"></textarea><br><br>
+        
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script type="module">
+
+        // Importação
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "Sua_API_Key",
+            authDomain: "seu_projeto.firebaseapp.com",
+            projectId: "seu_projeto",
+            storageBucket: "seu_projeto.appspot.com",
+            messagingSenderId: "Seu_ID",
+            appId: "Seu_App_ID",
+            measurementId: "Sua_Medida_ID"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase();
+
+        let form = document.getElementById("form_part2");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            let vetor = [];
+
+            // Iterar sobre as habilidades selecionadas
+            for (let i = 0; i < form.habilidades.length; i++) {
+                if (form.habilidades[i].checked) {
+                    vetor.push(form.habilidades[i].value);
+                }
+            }
+
+            // Enviar os dados para o Firebase
+            const usersRef = ref(database, 'users');
+            push(usersRef, {
+                nome: form.nome_completo.value,
+                cargo: form.cargo.value,
+                habilidades: vetor,
+                cursos: form.cursos_textarea.value
+            }).then(() => {
+                alert('Dados enviados com sucesso!');
+                console.log("Dados enviados com sucesso!");
+                // Faça qualquer ação adicional aqui, como redirecionar o usuário ou exibir uma mensagem de sucesso.
+            }).catch((error) => {
+                console.error('Erro ao enviar dados:', error);
+            });
+
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font: bold 11pt Arial;
+        background-color: rgba(238, 238, 108, 0.884);
+        text-align: center;
+        display: grid;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Exercício - Tabuada</h3>
+    <select name="operacao" id="operacao">
+      <option value="" disabled selected>Selecione a operação</option>
+      <option value="+">Adição</option>
+      <option value="-">Subtração</option>
+      <option value="*">Multiplicação</option>
+      <option value="/">Divisão</option>
+    </select>
+    <br />
+    <input id="number" type="number" placeholder="Informe um número" />
+    <br />
+    <input type="button" onclick="tabuada()" value="Calcular" />
+    <br />
+    <div id="resultado"></div>
+    <script>
+      function tabuada() {
+        let operacao = document.getElementById("Operacao").value;
+        let number = Number(document.getElementById("Number").value);
+        let resultado = document.getElementById("resultado").value;
+      }
+    </script>
+  </body>
+</html>

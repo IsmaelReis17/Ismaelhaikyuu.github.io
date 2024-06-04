@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabuada</title>
+    <style>
+      body {
+        font: bold 11pt Arial;
+        background-color: rgba(108, 121, 238, 0.884);
+        text-align: center;
+        display: grid;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Exercício - Tabuada</h3>
+    <select name="operacao" id="operacao">
+      <option value="" disabled selected>Selecione a operação</option>
+      <option value="+">Adição</option>
+      <option value="-">Subtração</option>
+      <option value="*">Multiplicação</option>
+      <option value="/">Divisão</option>
+    </select>
+    <br />
+    <input id="number" type="number" placeholder="Informe um número" />
+    <br />
+    <input type="button" onclick="tabuada()" value="Calcular" />
+    <br />
+    <div id="resultado"></div>
+
+    <script>
+      function tabuada() {
+        var operacao = document.getElementById("operacao").value;
+        var num = document.getElementById("number").value;
+        var resultadoDiv = document.getElementById("resultado");
+        resultadoDiv.innerHTML = ""; // Clear previous results
+
+        if (operacao === "" || num === "") {
+          resultadoDiv.textContent =
+            "Por favor, selecione uma operação e insira um número.";
+          return;
+        }
+
+        num = parseInt(num);
+        for (var i = 1; i <= 10; i++) {
+          var resultado;
+          switch (operacao) {
+            case "+":
+              resultado = num + i;
+              break;
+            case "-":
+              resultado = num - i;
+              break;
+            case "*":
+              resultado = num * i;
+              break;
+            case "/":
+              resultado = num / i;
+              break;
+            default:
+              resultadoDiv.textContent = "Operação inválida.";
+              return;
+          }
+          resultadoDiv.innerHTML +=
+            num + " " + operacao + " " + i + " = " + resultado + "<br/>";
+        }
+      }
+    </script>
+  </body>
+</html>

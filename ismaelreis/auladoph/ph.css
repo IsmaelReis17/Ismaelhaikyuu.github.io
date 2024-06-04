@@ -1,0 +1,31 @@
+body {
+  background-color: rgb(27, 35, 146);
+  font: bold 14pt Poppins;
+  text-align: center;
+}
+
+header {
+  color: white;
+  margin-top: 20px;
+  height: 40px;
+  font-size: 21pt;
+}
+
+section {
+  height: 300px;
+  text-align: left;
+  width: 400px;
+  background-color: white;
+  padding: 20px;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.527);
+}
+
+footer {
+  color: white;
+  font-style: italic;
+  margin-top: 20px;
+  height: 40px;
+  font-size: 7pt;
+}
